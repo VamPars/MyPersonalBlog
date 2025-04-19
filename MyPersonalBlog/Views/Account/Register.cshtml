@@ -1,0 +1,14 @@
+﻿@model MyPersonalBlog.DataLayer.DTOS.RegisterViewModel
+
+<form method="post">
+	<label asp-for="UserName"></label>
+	<input asp-for="UserName" type="text" />
+	<label asp-for="Email"></label>
+	<input asp-for="Email" type="password" />
+	<label asp-for="Password"></label>
+	<input asp-for="Password" type="password" />
+	<label asp-for="RePassword"></label>
+	<input asp-for="RePassword" type="password" />
+	<div asp-validation-summary="All"></div>
+	<input type="submit" value="ثبت نام" />
+</form>

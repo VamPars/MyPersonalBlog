@@ -1,0 +1,46 @@
+﻿@model List<MyPersonalBlog.DataLayer.Entities.Blog>
+<style>
+    @@keyframes slide-in 
+    {
+        100%
+        {
+            color : red!important;
+        }
+    }
+    
+</style>
+<style>
+    .card-text: hover
+    {
+        animation : slide-in 2s;
+    }
+</style>
+                    @foreach(var blog in Model)
+                    {
+                       
+                            <div class="card mb-2 " dir="rtl">
+                                <a href="#!"><img class="card-img-top" src="/images/@blog.Thumbnail" alt="تصویر @blog.Title" /></a>
+                                <div class="card-body">
+                                    <div class="small text-muted">@blog.PublishDate</div>
+                                    <h2 class="card-title h4">@blog.Title</h2>
+                                    <p class="card-text">@blog.ShortDescription</p>
+                                    <a class="btn btn-primary" href="#!">خواندن →</a>
+                                </div>
+                            </div>
+
+                    }
+                    
+          
+                    <!-- Pagination-->
+                    <nav aria-label="Pagination">
+                        <hr class="my-0" />
+                        <ul class="pagination justify-content-center my-4">
+                            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
+                            <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#!">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#!">3</a></li>
+                            <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
+                            <li class="page-item"><a class="page-link" href="#!">15</a></li>
+                            <li class="page-item"><a class="page-link" href="#!">Older</a></li>
+                        </ul>
+                    </nav>

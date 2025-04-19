@@ -1,0 +1,59 @@
+﻿@using MyPersonalBlog.Core.Tools
+@model List<MyPersonalBlog.DataLayer.Entities.Blog>
+@{
+	ViewData["Title"] = "Home Page";
+}
+
+@if(TempData["ErrorMessage"]!=null)
+{
+	<div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+@if(Model.Count != 0)
+{
+	<div class="card mb-4">
+	<a href="#!"><img class="card-img-top" src="/Images/Blog/@Model[0].Thumbnail" alt="@Model[0].Title تصویر" /></a>
+	<div class="card-body">
+		<div class="small text-muted">@Model[0].PublishDate.ConvertToJalali()</div>
+		<h2 class="card-title">@Model[0].Title</h2>
+		<p class="card-text">@Model[0].ShortDescription</p>
+		<a class="btn btn-warning" href="/Home/ShowBlog/@Model[0].Id">خواندن →</a>
+	</div>
+</div>
+}
+
+<!-- Nested row for non-featured blog posts-->
+<div class="row">
+	@if(Model.Count!=null)
+	{
+		@for (int i = 1; i < Model.Count; i++)
+	{
+		<div class="col-lg-6">
+			<!-- Blog post-->
+		<div class="card mb-4">
+				<a href="#!"><img class="card-img-top" src="/Images/Blog/@Model[i].Thumbnail" alt="@Model[i].Title تصویر" /></a>
+				<div class="card-body">
+					<div class="small text-muted">@Model[i].PublishDate.ConvertToJalali()</div>
+					<h2 class="card-title h4">@Model[i].Title</h2>
+					<p class="card-text text-truncate">@Model[i].ShortDescription.</p>
+					<a class="btn btn-warning" href="/Home/ShowBlog/@Model[i].Id">خواندن →</a>
+				</div>
+			</div>
+		</div>
+
+	}
+	}
+</div>
+<!-- Pagination-->
+@*<nav aria-label="Pagination">
+	<hr class="my-0" />
+	<ul class="pagination justify-content-center my-4">
+	<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
+	<li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
+	<li class="page-item"><a class="page-link" href="#!">2</a></li>
+	<li class="page-item"><a class="page-link" href="#!">3</a></li>
+	<li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
+	<li class="page-item"><a class="page-link" href="#!">15</a></li>
+	<li class="page-item"><a class="page-link" href="#!">Older</a></li>
+	</ul>
+	</nav>*@

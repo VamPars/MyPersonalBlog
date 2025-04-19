@@ -1,0 +1,12 @@
+﻿@model MyPersonalBlog.DataLayer.DTOS.LoginViewModel
+
+
+<form asp-action="Login" method="post">
+	<input asp-for="UserName" type="text" />
+	<input asp-for="Password" type="password"/>
+	<input asp-for="IsRemember" type="checkbox" />
+	<input type="submit"/>
+
+
+
+</form>

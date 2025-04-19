@@ -1,0 +1,12 @@
+﻿@model MyPersonalBlog.DataLayer.DTOS.EditBlogGroupViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<form method="post">
+	<label asp-for=BlogGroupName></label>
+	<input asp-for=BlogGroupName />
+	<input type="submit" value="ویرایش" />
+	<div asp-validation-summary=All></div>
+</form>

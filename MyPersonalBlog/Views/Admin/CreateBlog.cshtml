@@ -1,0 +1,21 @@
+﻿@model MyPersonalBlog.DataLayer.DTOS.CreateBlogViewModel
+
+<form method="post" dir="rtl" enctype="multipart/form-data" >
+	<label class="form-label" asp-for ="Title"></label>
+	<input class="form-control mb-2" asp-for="Title" />
+
+	<label class="form-label" asp-for ="ShortDescription"></label>
+	<input class="form-control mb-2" asp-for="ShortDescription" />
+
+	<label class="form-label" asp-for ="Description"></label>
+	<textarea class="form-control mb-2" asp-for="Description" rows="10"></textarea>
+
+	<label class="form-label" asp-for ="Tags"></label>
+	<input class="form-control mb-2" asp-for="Tags" />
+
+	<label class="form-label" asp-for ="BlogGroupId"></label>
+	<input class="form-control mb-2" asp-for="BlogGroupId" />
+
+	<input asp-for="Thumbnail" value="انتخاب فایل تصویر" />
+	<input class="btn btn-sm btn-warning w-100 mt-2 mb-3" type="submit" value="ساختن" />
+</form>

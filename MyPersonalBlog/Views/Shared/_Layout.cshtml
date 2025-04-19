@@ -1,0 +1,101 @@
+﻿@using MyPersonalBlog.Core.Tools
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - MyPersonalBlog</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/css/styles.css" asp-append-version="true" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<title>Blog Home - Start Bootstrap Template</title>
+	<!-- Favicon-->
+	@* <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />*@
+	<!-- Core theme CSS (includes Bootstrap)-->
+</head>
+<body>
+	<partial name="Navbar" />
+	<header class="py-5 bg-light border-bottom mb-4">
+		<div class="container">
+			<div class="text-center my-5">
+				<h1 class="fw-bolder">سلام به بلاگ یازدهم خوش آمدید</h1>
+				<p class="lead mb-0">در این سایت قرار است تجربیات شیرین و تلخ ما را دنبال کنید</p>
+			</div>
+		</div>
+	</header>
+	<!-- Page content-->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 mb-3">
+				<form action="/Home/Filter/" method="get">
+					<div class="card w-100" dir="rtl">
+						<div class="d-inline">
+							<label>
+								بازدید
+								<input type="checkbox" name="views" value="true" />
+							</label>
+
+							<label>
+								پسند
+								<input type="checkbox" name="likes" value="true" />
+							</label>
+
+							<label>
+								تاریخ انتشار
+								<input type="checkbox" name="publishDate" value="true" />
+							</label>
+
+							<button type="submit" class="btn btn-sm btn-warning">
+								<i class="bi bi-filter text-success"></i>
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- Blog entries-->
+			<div class="col-lg-8" dir="rtl">
+				<!-- Featured blog post-->
+				@RenderBody()
+			</div>
+			<!-- Side widgets-->
+			<div class="col-lg-4" dir="rtl">
+				<!-- Search widget-->
+				<form method="get" action="/Home/Search/">
+					<div class="card mb-4">
+						<div class="card-header">جست و جو</div>
+						<div class="card-body">
+							<div class="input-group">
+								<input name="id" class="form-control" type="text" placeholder="دنبال چی میگردی؟" aria-label="دنبال چی میگردی؟" aria-describedby="button-search" />
+								<button class="btn btn-sm btn-success p-3" id="button-search" type="submit">
+									<i class="bi bi-search"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</form>
+				<!-- Categories widget-->
+				@await Component.InvokeAsync("GetBlogGroups")
+				<!-- Side widget-->
+				<div class="card mb-4">
+					<div class="card-header">ابزارک ها</div>
+					<div class="card-body">@DateTime.Now.ConvertToJalali()</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Footer-->
+	<footer class="py-5 bg-dark">
+		<div class="container"><p class="m-0 text-center text-white">تمامی حقوق مادی، علمی و معنوی این اثر متعلق به دبیرستان علامه حلی 2 می باشد</p></div>
+	</footer>
+	<!-- Bootstrap core JS-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Core theme JS-->
+	<script src="js/scripts.js"></script>
+</body>
+</html>
+
+ @await RenderSectionAsync("Scripts", required: false)

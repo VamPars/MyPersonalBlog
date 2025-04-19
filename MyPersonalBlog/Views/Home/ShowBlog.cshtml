@@ -1,0 +1,28 @@
+﻿@using MyPersonalBlog.Core.Tools
+@model MyPersonalBlog.DataLayer.Entities.Blog
+
+<div class="container">
+	<h2>@Model.Title</h2>
+	<div class="d-flex">
+		<p><i class="bi bi-calendar-date mx-2 d-inline "></i> @Model.PublishDate.ConvertToJalali() </p>
+		<p class="mx-3">|</p>
+		<p><i class="bi bi-eye-fill mx-2 d-inline"></i>@Model.Viewes</p>
+	</div>
+	<hr />
+	<h3 class="fs-6">@Model.ShortDescription</h3>
+	<img class="w-100 img-thumbnail" src="/Images/Blog/@Model.Thumbnail" />
+	<p>@Model.Description</p>
+	@foreach (string tag in ViewBag.Tags)
+	{
+		<a href="/home/search/@tag" class="btn btn-small btn-danger">@tag</a>
+	}
+	<hr />
+	
+
+	<a>
+		<i class="bi bi-calendar-date"> @Model.Likes</i>
+	</a>
+	<p>@TempData["Time"]
+
+
+</div>
